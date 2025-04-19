@@ -67,7 +67,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
-      <header className="bg-white border-b">
+      <header className="bg-blue-100 border-b">
         <div className="container mx-auto px-4 py-3 flex justify-between items-center">
           <Link href="/dashboard" className="text-xl font-bold">
             ENSPYR AI Task Manager
