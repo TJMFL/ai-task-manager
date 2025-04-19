@@ -7,7 +7,7 @@ export default function Home() {
       <header className="bg-white border-b">
         <div className="container mx-auto px-4 py-3 flex justify-between items-center">
           <Link href="/" className="text-xl font-bold">
-            AI Task Manager
+            ENSPYR AI Task Manager
           </Link>
           <div className="space-x-2">
             <Button variant="outline" asChild>
@@ -24,7 +24,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-4xl font-bold mb-4">Manage Your Tasks with AI</h1>
           <p className="text-xl mb-8">
-            Extract tasks from emails and messages, organize them in a Kanban board or calendar, and track your progress
+            Extract tasks from emails and messages, organize and view on task board or calendar, and track your progress
             with detailed reports.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
