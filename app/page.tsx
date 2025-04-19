@@ -40,7 +40,7 @@ export default function Home() {
 
       <footer className="bg-white border-t py-4">
         <div className="container mx-auto px-4 text-center text-sm text-gray-500">
-          &copy; {new Date().getFullYear()} AI Task Manager. All rights reserved.
+          &copy; {new Date().getFullYear()} ENSPYR AI Task Manager
         </div>
       </footer>
     </div>
