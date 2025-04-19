@@ -6,7 +6,7 @@ import "./globals.css"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = {
-  title: "AI Task Manager",
+  title: "ENSPYR AI Task Manager",
   description: "Manage your tasks with AI assistance",
     generator: 'v0.dev'
 }
