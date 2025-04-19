@@ -46,7 +46,7 @@ export default function LoginForm() {
   }
 
   return (
-    <Card className="w-full max-w-md mx-auto shadow-lg shadow-blue-100">
+    <Card className="w-full max-w-md mx-auto shadow-lg shadow-blue-200">
       <CardHeader>
         <CardTitle className="text-2xl">Login</CardTitle>
         <CardDescription>Enter your credentials to access your tasks</CardDescription>
