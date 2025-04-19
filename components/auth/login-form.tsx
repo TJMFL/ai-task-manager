@@ -99,8 +99,8 @@ export default function LoginForm() {
           </Link>
         </p>
         <div className="text-sm text-muted-foreground text-center">
-          <p>For this demo, you need to register first before logging in.</p>
-          <p>Supabase requires real authentication with valid credentials.</p>
+          <p>You need to register first before logging in.</p>
+          <p>ENSPYR AI Task Manager requires real authentication with valid credentials.</p>
         </div>
       </CardFooter>
     </Card>
