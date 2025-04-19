@@ -134,7 +134,7 @@ export default function DashboardPage() {
           {/* AI Task Extractor - Full Width and Below */}
           <Card className="w-full">
             <CardHeader>
-              <CardTitle>Extract Tasks with AI</CardTitle>
+              <CardTitle>ENSPYR AI</CardTitle>
               <CardDescription>Paste emails, messages, or notes to automatically extract tasks</CardDescription>
             </CardHeader>
             <CardContent>
