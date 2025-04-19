@@ -103,7 +103,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
             <TabsTrigger value="kanban" asChild>
               <Link href="/dashboard/kanban">
                 <ClipboardList className="h-4 w-4 mr-2" />
-                Tasks
+                Kanban
               </Link>
             </TabsTrigger>
             <TabsTrigger value="calendar" asChild>
