@@ -70,7 +70,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
       <header className="bg-white border-b">
         <div className="container mx-auto px-4 py-3 flex justify-between items-center">
           <Link href="/dashboard" className="text-xl font-bold">
-            AI Task Manager
+            ENSPYR AI Task Manager
           </Link>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -103,7 +103,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
             <TabsTrigger value="kanban" asChild>
               <Link href="/dashboard/kanban">
                 <ClipboardList className="h-4 w-4 mr-2" />
-                Kanban
+                Tasks
               </Link>
             </TabsTrigger>
             <TabsTrigger value="calendar" asChild>
