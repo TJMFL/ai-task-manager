@@ -1,0 +1,6 @@
+TODO's
+- Add locations
+- Reports > Tasks by location
+- fix date edit issue for tasks on mobile
+- improve tasks card editability
+- improve hours logic to allow for adding hours while in progress and allow multiple entries for hours. When updating to completed a final completion date should be confirmed and thats the date the task should appear as completed for reporting, not just the day it was actually marked reported
