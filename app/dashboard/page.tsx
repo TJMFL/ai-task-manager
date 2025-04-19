@@ -115,7 +115,7 @@ export default function DashboardPage() {
       <TabsContent value="dashboard" className="space-y-6">
         <div className="grid grid-cols-1 gap-6">
           {/* Task Board - Full Width and Above */}
-          <Card className="w-full">
+          <Card className="w-full bg-blue-50 border-blue-200 shadow-lg shadow-blue-100">
             <CardHeader>
               <CardTitle>Task Board</CardTitle>
               <CardDescription>View and manage your tasks</CardDescription>
