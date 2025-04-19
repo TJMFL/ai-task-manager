@@ -1,15 +1,13 @@
 import { groq } from "@ai-sdk/groq"
 import { generateText } from "ai"
 import { NextResponse } from "next/server"
-
 export async function POST(req: Request) {
   try {
     const { content } = await req.json()
     if (!content) {
       return NextResponse.json({ error: "Content is required" }, { status: 400 })
     }
-    
-    const prompt = `
+    const prompt = 
       Extract tasks from the following content. For each task, identify:
       1. Title (short description of the task)
       2. Description (more details if available)
@@ -19,13 +17,11 @@ export async function POST(req: Request) {
       If no tasks are found, return an empty array.
       Content:
       ${content}
-    `
     
     const { text } = await generateText({
       model: groq("llama-3.1-8b-instant"),
       prompt,
     })
-    
     // Parse the response to extract tasks
     let tasks = []
     try {
@@ -41,21 +37,13 @@ export async function POST(req: Request) {
       console.error("Error parsing tasks:", error)
       tasks = []
     }
-    
-    // Calculate tomorrow's date for default due date
-    const tomorrow = new Date()
-    tomorrow.setDate(tomorrow.getDate() + 1)
-    const tomorrowFormatted = tomorrow.toISOString().split('T')[0] // Format as YYYY-MM-DD
-    
-    // Add source, created date, and default due date to each task
+    // Add source and created date to each task
     const tasksWithMetadata = tasks.map((task: any) => ({
       ...task,
       source: "ai-extraction",
       createdAt: new Date().toISOString(),
       status: "todo",
-      dueDate: task.dueDate || tomorrowFormatted // Use existing due date or default to tomorrow
     }))
-    
     return NextResponse.json({ tasks: tasksWithMetadata })
   } catch (error) {
     console.error("Error extracting tasks:", error)
