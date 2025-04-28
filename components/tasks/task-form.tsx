@@ -11,9 +11,11 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/componen
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Calendar } from "@/components/ui/calendar"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
+import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer"
 import { CalendarIcon, Loader2 } from "lucide-react"
 import { format } from "date-fns"
 import type { Task } from "@/lib/types"
+import { useIsMobile } from "@/hooks/use-mobile"
 
 interface TaskFormProps {
   task?: Partial<Task>
@@ -27,6 +29,7 @@ export default function TaskForm({ task, onSubmit, onCancel }: TaskFormProps) {
   const [priority, setPriority] = useState(task?.priority || "medium")
   const [dueDate, setDueDate] = useState<Date | undefined>(task?.dueDate ? new Date(task.dueDate) : undefined)
   const [isLoading, setIsLoading] = useState(false)
+  const isMobile = useIsMobile()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -74,7 +77,7 @@ export default function TaskForm({ task, onSubmit, onCancel }: TaskFormProps) {
           </div>
           <div className="space-y-2">
             <Label htmlFor="priority">Priority</Label>
-            <Select value={priority} onValueChange={(value) => setPriority(value)}>
+            <Select value={priority} onValueChange={(value) => setPriority(value as "low" | "medium" | "high")}>
               <SelectTrigger id="priority">
                 <SelectValue placeholder="Select priority" />
               </SelectTrigger>
@@ -87,17 +90,38 @@ export default function TaskForm({ task, onSubmit, onCancel }: TaskFormProps) {
           </div>
           <div className="space-y-2">
             <Label htmlFor="dueDate">Due Date</Label>
-            <Popover>
-              <PopoverTrigger asChild>
-                <Button variant="outline" className="w-full justify-start text-left font-normal">
-                  <CalendarIcon className="mr-2 h-4 w-4" />
-                  {dueDate ? format(dueDate, "PPP") : "Select a date"}
-                </Button>
-              </PopoverTrigger>
-              <PopoverContent className="w-auto p-0">
-                <Calendar mode="single" selected={dueDate} onSelect={setDueDate} initialFocus />
-              </PopoverContent>
-            </Popover>
+            {isMobile ? (
+              <Drawer>
+                <DrawerTrigger asChild>
+                  <Button variant="outline" className="w-full justify-start text-left font-normal">
+                    <CalendarIcon className="mr-2 h-4 w-4" />
+                    {dueDate ? format(dueDate, "PPP") : "Select a date"}
+                  </Button>
+                </DrawerTrigger>
+                <DrawerContent>
+                  <div className="mt-4 border-t">
+                    <Calendar
+                      mode="single"
+                      selected={dueDate}
+                      onSelect={setDueDate}
+                      initialFocus
+                    />
+                  </div>
+                </DrawerContent>
+              </Drawer>
+            ) : (
+              <Popover>
+                <PopoverTrigger asChild>
+                  <Button variant="outline" className="w-full justify-start text-left font-normal">
+                    <CalendarIcon className="mr-2 h-4 w-4" />
+                    {dueDate ? format(dueDate, "PPP") : "Select a date"}
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-auto p-0">
+                  <Calendar mode="single" selected={dueDate} onSelect={setDueDate} initialFocus />
+                </PopoverContent>
+              </Popover>
+            )}
           </div>
         </CardContent>
         <CardFooter className="flex justify-between">
